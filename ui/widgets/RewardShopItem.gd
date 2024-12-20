@@ -2,6 +2,7 @@ extends Control
 
 @onready var image = $TextureRect
 @onready var rw_name = $Label
+@onready var rw_name_infio = $Label2
 var id
 var ins:BaseReward
 
@@ -16,6 +17,7 @@ func setData(id):
 	ins = RewardServer.reward_list[id].instantiate()
 	image.texture = ins.reward_image
 	rw_name.text = ins.reward_name
+	rw_name_infio.text = ins.reward_info
 
 func _exit_tree() -> void:
 	if ins:

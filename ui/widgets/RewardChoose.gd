@@ -38,7 +38,8 @@ func onClick(id):
 		Utils.showToast("NO POINTS")
 
 func onMouseIn(info):
-	info_label.text = tr(info)
+	#info_label.text = tr(info)
+	pass
 
 
 func _on_button_2_pressed() -> void:
@@ -49,4 +50,5 @@ func _on_button_2_pressed() -> void:
 		
 
 func _on_button_pressed() -> void:
+	PlayerData.sendShowJoystick(true)
 	queue_free()

@@ -13,8 +13,9 @@ var one_bullet_array = []
 
 func _shoot():
 	super._shoot()
-	var mouse_pos = get_global_mouse_position()
-	var direction = (mouse_pos - gun_tip.global_position).normalized()
+	if (OS.get_name() == "Window"):
+		var mouse_pos = get_global_mouse_position()
+		direction = (mouse_pos - gun_tip.global_position).normalized()
 	gun_tip.rotation = direction.angle()
 	openFire()
 
@@ -65,6 +66,7 @@ func openFire():
 
 func openLaser():
 	audio.play()
+	haptic.playHaptic()
 	player.set_knockback(recoil)
 	tick.start()
 	particles_end.emitting = true

@@ -11,8 +11,9 @@ func _draw():
 
 func _shoot():
 	super._shoot()
-	var mouse_pos = get_global_mouse_position()
-	var direction = (mouse_pos - gun_tip.global_position).normalized()
+	if (OS.get_name() == "Window"):
+		var mouse_pos = get_global_mouse_position()
+		direction = (mouse_pos - gun_tip.global_position).normalized()
 	gun_tip.rotation = direction.angle()
 	var b = bullet_scene.instantiate()
 	b.setOnwer(player)

@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://b5npvlllq6sm1"]
+[gd_scene load_steps=11 format=3 uid="uid://b5npvlllq6sm1"]
 
 [ext_resource type="Script" path="res://game/equip/EquipOnFloor.gd" id="1_vm7af"]
 [ext_resource type="Texture2D" uid="uid://cxkg2hxdgf34a" path="res://Sprites/light.png" id="2_wdcbn"]
 [ext_resource type="Texture2D" uid="uid://die8toapequn2" path="res://game/hero/undead_shadow.png" id="3_r1vet"]
 [ext_resource type="Texture2D" uid="uid://t0txnlfu2j08" path="res://Sprites/equip/Slice 10.png" id="4_4popx"]
-[ext_resource type="FontFile" uid="uid://dy05l0eg8wun5" path="res://fonts/px.ttf" id="5_4wn1k"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1pkyr"]
 
@@ -162,12 +161,6 @@ _data = {
 "show": SubResource("Animation_lh1bb")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_l1632"]
-font = ExtResource("5_4wn1k")
-font_size = 9
-outline_size = 2
-outline_color = Color(0.560784, 0.560784, 0.560784, 1)
-
 [node name="EquipOnFloor" type="Node2D"]
 script = ExtResource("1_vm7af")
 
@@ -210,18 +203,16 @@ autoplay = "show"
 wait_time = 30.0
 one_shot = true
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Button" parent="."]
 visible = false
 offset_left = -64.0
 offset_top = -46.0
 offset_right = 64.0
 offset_bottom = -23.0
 text = "touch e"
-label_settings = SubResource("LabelSettings_l1632")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Label" to="." method="touch_btn_pressed"]

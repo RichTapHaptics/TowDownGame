@@ -158,7 +158,8 @@ func showToast(msg,time = 1):
 	canvasLayer.showToast(msg,time)
 
 func crosshairChange(is_change):
-	canvasLayer.crosshairChange(is_change)
+	if (OS.get_name() == "Window") :
+		canvasLayer.crosshairChange(is_change)
 
 func getShader(quality):
 	match quality:

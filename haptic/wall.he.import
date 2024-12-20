@@ -1,0 +1,17 @@
+[remap]
+
+importer="He"
+type="Resource"
+uid="uid://1nf72c7aht44"
+path="res://.godot/imported/wall.he-6109f0d4df972134e4c56b356106de86.tres"
+
+[deps]
+
+files=["res://.godot/imported/wall.he-6109f0d4df972134e4c56b356106de86.tres"]
+
+source_file="res://haptic/wall.he"
+dest_files=["res://.godot/imported/wall.he-6109f0d4df972134e4c56b356106de86.tres", "res://.godot/imported/wall.he-6109f0d4df972134e4c56b356106de86.tres"]
+
+[params]
+
+use_red_anyway=false

@@ -1,7 +1,6 @@
 extends Node2D
 class_name BaseGun
 
-
 const particles_pre = preload("res://game/hero/gpu_particles_2d.tscn")
 
 ## 武器ID
@@ -38,6 +37,7 @@ var attachments = {
 @onready var anim_player:AnimationPlayer = $AnimationPlayer
 @onready var gun_tip = $GunTip
 @onready var audio = $AudioStreamPlayer2D
+@onready var haptic = $RichtapPlayer2D
 @onready var timer = $shoot_timer
 @onready var gun_image = $Sprite2D
 
@@ -116,9 +116,10 @@ func _process(delta):
 	if Utils.freeze_frame:
 		delta = 0.0
 	var mouse_pos = get_global_mouse_position()
-	direction = (mouse_pos - gun_tip.global_position).normalized()
-	
-	if Input.mouse_mode == Input.MOUSE_MODE_CONFINED_HIDDEN && Input.is_action_pressed("shoot") and can_shoot and !is_reloading:
+	if (OS.get_name() == "Window"):
+		direction = (mouse_pos - gun_tip.global_position).normalized()
+	if Input.mouse_mode == Input.MOUSE_MODE_CONFINED_HIDDEN &&  Input.is_action_pressed("shoot") and can_shoot and !is_reloading:
+		print("BaseGun _shootGun _process：")
 		can_shoot = false
 		timer.start()
 		if bullets_count > 0:
@@ -128,6 +129,16 @@ func _process(delta):
 	
 	if is_use && Input.is_action_pressed("reload"):
 		reload_ammo()
+
+func _shootGun() :
+	print("BaseGun _shootGun can_shoot：",can_shoot," is_reloading:",is_reloading,"weapon_name:",weapon_name,"weapon_id",weapon_id)
+	if can_shoot and !is_reloading:
+		can_shoot = false
+		timer.start()
+		if bullets_count > 0:
+			_shoot()
+		else:
+			reload_ammo()
 
 #设置是否正在使用
 func set_use(use:bool):
@@ -152,7 +163,7 @@ func fire(bullet:Bullet,is_bullet = true,is_play = true):
 			can_shoot = false
 			bullet.queue_free()
 			return
-	
+	#bullet.rotation = direction.angle()
 	bullet.speed = bullet_speed
 	bullet.hurt = damage * (1+PlayerData.base_bullet_damage)
 	bullet.knockback_speed = knockback_speed
@@ -164,7 +175,9 @@ func fire(bullet:Bullet,is_bullet = true,is_play = true):
 		player.set_knockback(recoil)
 	if is_play:
 		audio.play()
-
+		haptic.playHaptic()
+	
+		
 #切换子弹
 func reload_ammo():
 	if PlayerData.player_ammo == 0:
@@ -185,6 +198,11 @@ func playReload():
 func _physics_process(delta):
 	if Utils.freeze_frame:
 		delta = 0.0
+	
+	direction = Input.get_vector("gunLeft", "gunRight", "gunUp", "gunDown")
+	if direction != Vector2.ZERO:
+		_shootGun()
+	#_shootGun()
 	#if Utils.freeze_frame:
 		#if Engine.get_physics_frames() % freeze_frame == 0:
 			# 暂停一帧
@@ -201,3 +219,4 @@ func _shootAnim():
 	var ins = particles_pre.instantiate()
 	ins.position = gun_tip.position
 	add_child(ins)
+	

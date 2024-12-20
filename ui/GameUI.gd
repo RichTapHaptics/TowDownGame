@@ -23,6 +23,8 @@ const rw_top = preload("res://ui/widgets/RewardTopItem.tscn")
 @onready var level_bar = $hpUI/ProgressBar2
 @onready var level_panel = $LevelUpPanel
 
+@onready var appUi = $appUI
+
 var inv_ui
 
 func _ready() -> void:
@@ -36,8 +38,14 @@ func _ready() -> void:
 	PlayerData.playerWeaponListChange.connect(self.playerWeaponListChange) #武器列表化监听
 	PlayerData.onWeaponChangeAnim.connect(self.onWeaponChangeAnim) #武器化监听
 	PlayerData.onWeaponBulletsChange.connect(self.onWeaponBulletsChange) #武器化监听
+	PlayerData.showJoystick.connect(self.isShowAppUi)
 	PlayerData.onHpChange.connect(func hpChange(hp,max_hp): #血量变化监听
 		hp_bar.max_value = max_hp;hp_bar.value = hp)
+	if (OS.get_name() == "Android"):
+		appUi.visible = true
+
+func isShowAppUi(isShow:bool):
+	appUi.visible = isShow && OS.get_name() != "Windows"
 
 func onGameStart():
 	onGoldChange(PlayerData.gold)
@@ -131,3 +139,4 @@ func _input(event: InputEvent) -> void:
 			Utils.crosshairChange(false)
 			inv_ui = weapon_inventory.instantiate()
 			get_parent().add_child(inv_ui)
+	

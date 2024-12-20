@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b8fluhc5dx881"]
+[gd_scene load_steps=26 format=3 uid="uid://b8fluhc5dx881"]
 
 [ext_resource type="Script" path="res://ui/ControlUI.gd" id="1_hodr7"]
 [ext_resource type="Theme" uid="uid://d264vgetmywyw" path="res://ui/theme.tres" id="2_52b7e"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://ui/MainUI.gd" id="2_foget"]
 [ext_resource type="PackedScene" uid="uid://cjqkfg0gdxyar" path="res://ui/widgets/Crosshair.tscn" id="3_88kmq"]
 [ext_resource type="Script" path="res://ui/SettingUI.gd" id="4_0nthv"]
+[ext_resource type="PackedScene" uid="uid://dnts11pkdf041" path="res://joystick/virtual_joystick.tscn" id="4_hlrek"]
 [ext_resource type="AudioStream" uid="uid://ik5t77ml7ave" path="res://audio/CLOTHMvmt_Clothing Rustle Arm_01.wav" id="5_m8t5a"]
 [ext_resource type="PackedScene" uid="uid://dgg8t0vevnaq2" path="res://ui/ModUI.tscn" id="8_hrt6v"]
 [ext_resource type="Texture2D" uid="uid://cck41ti3sn08g" path="res://Sprites/ui/title.png" id="8_ovypj"]
@@ -152,13 +153,16 @@ script = ExtResource("2_cj0m0")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GameUI"]
 layout_mode = 1
-anchors_preset = 2
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = -24.0
-offset_right = 215.0
-offset_bottom = -4.0
+offset_left = -85.0
+offset_top = -50.0
+offset_right = 95.0
+offset_bottom = -30.0
+grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Container" type="Control" parent="GameUI"]
@@ -258,6 +262,48 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 8
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="appUI" type="Control" parent="GameUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Virtual Joystick" parent="GameUI/appUI" instance=ExtResource("4_hlrek")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.783
+anchor_bottom = 0.783
+offset_left = 30.0
+offset_top = -20.09
+offset_right = 130.0
+offset_bottom = 79.91
+scale = Vector2(0.5, 0.5)
+deadzone_size = 5.0
+clampzone_size = 35.0
+action_left = "left"
+
+[node name="Virtual Joystick2" parent="GameUI/appUI" instance=ExtResource("4_hlrek")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_top = -100.0
+offset_right = -14.0
+offset_bottom = -50.0
+grow_horizontal = 0
+scale = Vector2(0.8, 0.8)
+clampzone_size = 35.0
+action_left = "gunLeft"
+action_right = "gunRight"
+action_up = "gunUp"
+action_down = "gunDown"
 
 [node name="hpUI" type="Control" parent="GameUI"]
 layout_mode = 1
@@ -364,21 +410,6 @@ text = "Level Up"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="all_ammo2" type="Label" parent="GameUI/LevelUpPanel"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -29.5
-offset_top = 15.0
-offset_right = 29.5
-offset_bottom = 30.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 7
-text = "LEVLE_DM"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="all_ammo3" type="Label" parent="GameUI/LevelUpPanel"]
 layout_mode = 1
 anchors_preset = 5
@@ -391,6 +422,21 @@ offset_bottom = 46.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 7
 text = "LEVLE_HP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="all_ammo2" type="Label" parent="GameUI/LevelUpPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -29.5
+offset_top = 15.0
+offset_right = 29.5
+offset_bottom = 30.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 7
+text = "LEVLE_DM"
 horizontal_alignment = 1
 vertical_alignment = 1
 

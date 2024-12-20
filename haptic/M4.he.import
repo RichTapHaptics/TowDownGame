@@ -1,0 +1,17 @@
+[remap]
+
+importer="He"
+type="Resource"
+uid="uid://b7ksu48drijqo"
+path="res://.godot/imported/M4.he-0b9a9e69ea7507a6cf2528163187ce75.tres"
+
+[deps]
+
+files=["res://.godot/imported/M4.he-0b9a9e69ea7507a6cf2528163187ce75.tres"]
+
+source_file="res://haptic/M4.he"
+dest_files=["res://.godot/imported/M4.he-0b9a9e69ea7507a6cf2528163187ce75.tres", "res://.godot/imported/M4.he-0b9a9e69ea7507a6cf2528163187ce75.tres"]
+
+[params]
+
+use_red_anyway=false

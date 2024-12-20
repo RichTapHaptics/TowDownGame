@@ -2,6 +2,7 @@ extends Node
 
 signal playerWeaponListChange() #武器列表改变
 signal onWeaponChanged() #切换武器
+signal showJoystick() #武器射击
 signal onWeaponChangeAnim(id) #切换武器动作
 signal onPlayerFireRateChange(player_fire_rate) #玩家复活信号
 signal onWeaponBulletsChange(bullet,max_bullet) #武器子弹数量变化
@@ -94,12 +95,16 @@ func addPlayerHp(hp):
 var is_change_weapon = false
 #添加一把武器
 func add_weapon(weapon:BaseGun):
+	print("PlayData add_weapon",weapon.weapon_id)
 	if !player_weapon_list.has(weapon.weapon_id):
 		player_weapon_list[weapon.weapon_id] = weapon
 		emit_signal("playerWeaponListChange")
 		return true
 	return false
 
+func sendShowJoystick(show:bool = true) :
+	emit_signal("showJoystick",show)
+	
 #添加一堆武器
 func add_weapons(weapons :Array):
 	var is_change = false

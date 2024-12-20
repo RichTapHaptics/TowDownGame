@@ -1,0 +1,17 @@
+[remap]
+
+importer="He"
+type="Resource"
+uid="uid://cgbrj0bim0xc4"
+path="res://.godot/imported/AK47.he-86747cfccb94c7ab447838c5942adad4.tres"
+
+[deps]
+
+files=["res://.godot/imported/AK47.he-86747cfccb94c7ab447838c5942adad4.tres"]
+
+source_file="res://haptic/AK47.he"
+dest_files=["res://.godot/imported/AK47.he-86747cfccb94c7ab447838c5942adad4.tres", "res://.godot/imported/AK47.he-86747cfccb94c7ab447838c5942adad4.tres"]
+
+[params]
+
+use_red_anyway=false

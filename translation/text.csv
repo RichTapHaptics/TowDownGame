@@ -151,3 +151,11 @@ Quick Reload Magazine,Quick Reload Magazine,快速弹夹
 Quick Reload Magazine info,Increase reload speed of all firearms by 5% (stackable up to a maximum of 10 layers),所有枪械换弹速度提高5%（最高叠加10层）
 Aim Enhancement,Aim Enhancement,瞄准强化
 Aim Enhancement info,"Firearm damage has a 10% chance to deal 150% damage (stackable up to 10 layers, with 100% chance)",枪械伤害有10%的概率造成150%的伤害（最高叠加10层，100%的概率）
+Guidance Device,Guidance Device,火力强化
+Guidance Device info,Guidance Device info,使你的所有枪械基础伤害提高10%
+Power Core,Power Core,移动强化
+Power Core info,Power Core info,提高玩家移动速度5点
+Flashbang Grenade,Flashbang Grenade,眩晕一击
+Flashbang Grenade info,Flashbang Grenade info,使怪物眩晕1s
+Incendiary Bullet,Incendiary Bullet,蓝色病毒
+Incendiary Bullet info,Incendiary Bullet info,击杀敌人后，尸体会爆炸，周边敌人持续掉血

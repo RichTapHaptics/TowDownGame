@@ -77,6 +77,7 @@ func mouseEvent(show,am):
 
 #关闭
 func _on_button_3_pressed() -> void:
+	PlayerData.sendShowJoystick()
 	queue_free()
 
 #刷新

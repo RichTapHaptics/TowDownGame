@@ -15,6 +15,7 @@ func _ready() -> void:
 	image.texture = gun.image
 
 func _input(event: InputEvent) -> void:
+	#print("jiangzb","event 事件被点击",pressed_name)
 	if !pressed_name.is_empty() && event.is_action_pressed(pressed_name):
 		PlayerData.changeWeapon(local_id)
 
@@ -27,7 +28,6 @@ func onWeaponChanged():
 func _on_button_pressed() -> void:
 	emit_signal("weapon_click",local_id)
 
-
-func _on_image_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.is_pressed():
-		print(123123)
+func _gui_input(event):
+	if event is InputEventMouseButton && !pressed_name.is_empty()  && event.is_pressed():
+		PlayerData.changeWeapon(local_id)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b5766vf0e5ckg"]
+[gd_scene load_steps=20 format=3 uid="uid://b5766vf0e5ckg"]
 
 [ext_resource type="Script" path="res://game/guns/BoomBoi.gd" id="1_5fns6"]
 [ext_resource type="Texture2D" uid="uid://bsxk02hl7i4a6" path="res://Sprites/The Tiny Alchemist - Guns/gun5.png" id="2_7wcnc"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://cqdvy2oqigf3n" path="res://audio/bullet/SCIMisc_Reload Alien Tech_05.wav" id="4_0ip26"]
 [ext_resource type="AudioStream" uid="uid://carvr71fdnshp" path="res://audio/LASRGun_Electron Impeller Fire_01.wav" id="5_7ljlq"]
 [ext_resource type="Animation" uid="uid://b42daukxb8wl4" path="res://game/guns/anim/reload.anim" id="6_we6lh"]
+[ext_resource type="Script" path="res://addons/richtap_haptic/RichtapPlayer.gd" id="8_nti2r"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1o134"]
 blend_mode = 1
@@ -148,6 +149,9 @@ position = Vector2(11, -1)
 
 [node name="tick" type="Timer" parent="."]
 wait_time = 0.1
+
+[node name="RichtapPlayer2D" type="Node2D" parent="."]
+script = ExtResource("8_nti2r")
 
 [connection signal="timeout" from="shoot_timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="tick" to="." method="_on_tick_timeout"]

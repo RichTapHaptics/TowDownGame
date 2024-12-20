@@ -33,10 +33,11 @@ func _ready():
 	LevelServer.onNextLevel.connect(self.onNextLevel)
 	Utils.onGameStart.connect(self.onGameStart)
 	PlayerData.onPlayerDeath.connect(self.onPlayerDeath)
-
+		
 func _unhandled_input(event: InputEvent) -> void:
 	if $CanvasLayer/openShop.visible && Input.is_action_just_pressed("e"):
 		var ins = Utils.shop_pre.instantiate()
+		print("_unhandled_input shop_pre")
 		$CanvasLayer.add_child(ins)
 
 func onGameStart():
@@ -155,3 +156,10 @@ func onMonsterDeath(monster_ins):
 			LevelServer.level_info.gold += 1)
 		monster_root.add_child(ins)
 	kill_playr.play()
+	
+func openShop():
+	if $CanvasLayer/openShop.visible:
+		var ins = Utils.shop_pre.instantiate()
+		print("openClickE shop_pre")
+		$CanvasLayer.add_child(ins)
+	PlayerData.sendShowJoystick(false)

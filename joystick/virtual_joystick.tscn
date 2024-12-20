@@ -15,6 +15,7 @@ offset_right = 152.0
 offset_bottom = 5.0
 grow_vertical = 0
 script = ExtResource("1_biwty")
+action_left = "directionLeft"
 
 [node name="Base" type="TextureRect" parent="."]
 layout_mode = 1

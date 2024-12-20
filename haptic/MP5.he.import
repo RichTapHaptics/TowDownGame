@@ -1,0 +1,17 @@
+[remap]
+
+importer="He"
+type="Resource"
+uid="uid://dpmgcos3mkr65"
+path="res://.godot/imported/MP5.he-68857f68c17ebd985353b330b90bebd9.tres"
+
+[deps]
+
+files=["res://.godot/imported/MP5.he-68857f68c17ebd985353b330b90bebd9.tres"]
+
+source_file="res://haptic/MP5.he"
+dest_files=["res://.godot/imported/MP5.he-68857f68c17ebd985353b330b90bebd9.tres", "res://.godot/imported/MP5.he-68857f68c17ebd985353b330b90bebd9.tres"]
+
+[params]
+
+use_red_anyway=false

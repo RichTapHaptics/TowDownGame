@@ -1,0 +1,17 @@
+[remap]
+
+importer="He"
+type="Resource"
+uid="uid://bkd0t7tsflh8b"
+path="res://.godot/imported/HK416.he-c12b27833d1dfd6173ff8bf0c00ea6d6.tres"
+
+[deps]
+
+files=["res://.godot/imported/HK416.he-c12b27833d1dfd6173ff8bf0c00ea6d6.tres"]
+
+source_file="res://haptic/HK416.he"
+dest_files=["res://.godot/imported/HK416.he-c12b27833d1dfd6173ff8bf0c00ea6d6.tres", "res://.godot/imported/HK416.he-c12b27833d1dfd6173ff8bf0c00ea6d6.tres"]
+
+[params]
+
+use_red_anyway=false

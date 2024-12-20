@@ -20,7 +20,7 @@ var knockback_speed = 0 #后坐力速度
 var is_dash = false
 var look_dir = null
 
-func _init() -> void:
+func _init() -> void: 
 	PlayerData.onHpChange.connect(self.onHpChange)
 	PlayerData.onPlayerResurrect.connect(self.onPlayerResurrect)
 	Utils.onGameStart.connect(self.onGameStart)
@@ -84,6 +84,7 @@ func _physics_process(delta):
 	if Utils.freeze_frame:
 		delta = 0.0
 	var direction = Input.get_vector("left", "right", "up", "down")
+	var	bulletDirection = Input.get_vector("gunLeft", "gunRight", "gunUp", "gunDown")
 	if is_knockback:
 		if direction != Vector2.ZERO && SPEED < knockback_speed:
 			velocity = (SPEED - knockback_speed) * global_position.direction_to(get_global_mouse_position())
@@ -97,8 +98,15 @@ func _physics_process(delta):
 	changeAnim(direction)
 	$PointLight2D2.look_at(get_global_mouse_position())
 	if gun:
-		gun.look_at(get_global_mouse_position())
-		setGunLookat(get_global_mouse_position())
+		#gun.getOr(direction)
+		#print("Hero","direction.angle()" , direction.angle())
+		setGunLookat(bulletDirection)
+		var s2:float = bulletDirection.angle()
+		if (s2 > PI / 2) :
+			s2  = PI - s2
+		if (s2 < PI / -2):
+			s2  = -PI  - s2
+		gun.rotation = s2
 
 func set_knockback(knockback_speed):
 	self.knockback_speed = knockback_speed
@@ -108,10 +116,10 @@ func set_knockback(knockback_speed):
 
 func setGunLookat(dir):
 	if dir != null:
-		look_dir = gun.global_position + (dir * 1000)
-		if dir.x > position.x && body.scale.x != 1:
+		look_dir = (dir * 1000)
+		if dir.x > 0 && body.scale.x != 1:
 			body.scale.x = 1
-		elif dir.x < position.x && body.scale.x != -1:
+		elif dir.x < 0 && body.scale.x != -1:
 			body.scale.x = -1
 	else:
 		look_dir = null

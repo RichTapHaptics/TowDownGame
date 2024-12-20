@@ -29,3 +29,9 @@ func _on_area_2d_body_exited(body):
 	if body is Player:
 		$Label.visible = false
 
+func touch_btn_pressed():
+	if $Label.visible && !is_pick:
+		get_viewport().set_input_as_handled()
+		is_pick = true
+		EquipServer.addEquipToPlayer(equip)
+		queue_free()
