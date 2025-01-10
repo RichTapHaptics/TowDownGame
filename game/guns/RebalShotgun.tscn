@@ -6,7 +6,7 @@
 [ext_resource type="Animation" uid="uid://b42daukxb8wl4" path="res://game/guns/anim/reload.anim" id="4_v8j53"]
 [ext_resource type="AudioStream" uid="uid://dykjelucvrjre" path="res://audio/bullet/GUNMech_Reload_10.wav" id="4_wdy2l"]
 [ext_resource type="AudioStream" uid="uid://o5y7ktpfio7w" path="res://audio/GUNTech_Tormentor Shotgun Fire_01.wav" id="6_qeqtq"]
-[ext_resource type="Script" path="res://addons/richtap_haptic/RichtapPlayer.gd" id="7_eug2e"]
+[ext_resource type="Script" path="res://addons/richtap_haptic/RichTapPlayer.gd" id="7_n82ul"]
 
 [sub_resource type="Animation" id="Animation_4mjfa"]
 resource_name = "run"
@@ -71,7 +71,7 @@ stream = ExtResource("6_qeqtq")
 [node name="GunTip" type="Node2D" parent="."]
 position = Vector2(8, -1)
 
-[node name="RichtapPlayer2D" type="Node2D" parent="."]
-script = ExtResource("7_eug2e")
+[node name="RichTapPlayer2D" type="Node2D" parent="."]
+script = ExtResource("7_n82ul")
 
 [connection signal="timeout" from="shoot_timer" to="." method="_on_timer_timeout"]

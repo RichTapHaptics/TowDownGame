@@ -1,66 +1,65 @@
 @tool
 extends Node
-var sdk
+var sdk:BaseRichTapPlatformSdk
 
 func _ready():
+	print("RichTapSdk _ready platform:",OS.get_name())
 	if (OS.get_name() == "Android") :
-		print("RichtapSdk 创建RichTapAndroidSdk")
 		sdk = RichTapAndroidSdk.new()
+	elif(OS.get_name() == "iOS") :
+		sdk = RichTapIOSSdk.new()
 	else: 
-		print("RichtapSdk 创建RichTapWindowSdk")
 		sdk = RichTapWindowSdk.new()
-	initHaptic()
-
-func initHaptic() :
 	sdk.initHaptic()
 	
-func enableDebug(enable:bool):
-	sdk.debug(enable)
+func openLog(enable:bool):
+	sdk.enableDebug(enable)
 
 func playHaptic(he: String, loopCount: int = 0, interval: int = 0, amplitude: int = 255, freq: int = 0): 
-	if (sdk == null) :
-		return
-	if (OS.get_name() == "Android") :
-		sdk.playHaptic(he,loopCount,interval,amplitude,freq)
-	else: 
-		sdk.playHaptic(he,loopCount,amplitude,freq)
+	print("RichTapSdk playHaptic amplitude:",amplitude)
+	if (sdk != null) :
+		return sdk.playHaptic(he,loopCount,interval,amplitude,freq)
 	
-func stopHaptic():
-	sdk.stopHaptic()
+func stopHaptic(playId = null):
+	if (sdk is RichTapIOSSdk) :
+		if (playId != null):
+			sdk.stopHapticById(playId)
+		else:
+			sdk.stopHaptic()
+	else :	
+		sdk.stopHaptic()
 	
 func playExtPrebaked(prebakedId: int, strength: int):
-	if (sdk != null && OS.get_name() == "Android") :
+	if (sdk != null) :
 		sdk.playExtPrebaked(prebakedId,strength)
 	
-func updatePlayerParameter(intensity: int = 0, freq: int = 0, interval: int = 0) :
-	sdk.updatePlayerParameter(intensity,interval)
-	
-func setGain(gain: int) :
-	sdk.setGain(gain)
+func setGain(gain: int ,playId:int) :
+	if (sdk is RichTapIOSSdk) :
+		sdk.setIosGain(gain,playId)
 	
 func getSdkVersion() :
 	return sdk.getSdkVersion()
 	
 func isSupportedRichTap() :
-	if (OS.get_name() == "Android") :
+	if (sdk is RichTapAndroidSdk || sdk is RichTapIOSSdk) :
 		return sdk.isSupportedRichTap()
 
 func getCoreVersion() :
-	if (OS.get_name() == "Android") :
+	if (sdk is RichTapAndroidSdk) :
 		return sdk.getCoreVersion()
 	
 func isPlayerTypeAvailable(playerType:int) :
-	if (OS.get_name() == "Android") :
+	if (sdk is RichTapAndroidSdk) :
 		return sdk.isPlayerTypeAvailable(playerType)
 
 func getDuration(json:String):
-	if (OS.get_name() == "Android") :
+	if (sdk is RichTapAndroidSdk || sdk is RichTapIOSSdk) :
 		return sdk.getDuration(json)
 	
 func selectPlayer(playerType: int) :
-	if (OS.get_name() == "Android") :
+	if (sdk is RichTapAndroidSdk) :
 		return sdk.selectPlayer(playerType)
 
-func setTargetControllers(count = 1, index = [0]):
-	if (OS.get_name() == "Windows") :
-		sdk.setTargetControllers(count, index)
+func setTargetControllers(index = [0]):
+	if (sdk is RichTapWindowSdk) :
+		sdk.setTargetControllers(index)

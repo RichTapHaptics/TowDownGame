@@ -41,7 +41,7 @@ func _ready() -> void:
 	PlayerData.showJoystick.connect(self.isShowAppUi)
 	PlayerData.onHpChange.connect(func hpChange(hp,max_hp): #血量变化监听
 		hp_bar.max_value = max_hp;hp_bar.value = hp)
-	if (OS.get_name() == "Android"):
+	if (OS.get_name() == "Android" || OS.get_name() == "iOS"):
 		appUi.visible = true
 
 func isShowAppUi(isShow:bool):

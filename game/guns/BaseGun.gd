@@ -37,7 +37,7 @@ var attachments = {
 @onready var anim_player:AnimationPlayer = $AnimationPlayer
 @onready var gun_tip = $GunTip
 @onready var audio = $AudioStreamPlayer2D
-@onready var haptic = $RichtapPlayer2D
+@onready var haptic = $RichTapPlayer2D
 @onready var timer = $shoot_timer
 @onready var gun_image = $Sprite2D
 

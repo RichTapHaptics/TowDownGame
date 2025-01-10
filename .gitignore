@@ -3,3 +3,5 @@
 android/
 apk/
 RICHTAP_LOG.log
+.DS_Store
+export_presets.cfg

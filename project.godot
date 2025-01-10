@@ -26,7 +26,7 @@ PlayerServer="*res://autoload/server/PlayerServer.gd"
 MapServer="*res://autoload/server/MapServer.gd"
 EquipServer="*res://autoload/server/EquipServer.gd"
 SceneManager="*res://addons/scene_manager/SceneManager.tscn"
-RichtapSdk="*res://addons/richtap_haptic/RichtapSdk.gd"
+RichTapSdk="*res://addons/richtap_haptic/RichTapSdk.gd"
 
 [display]
 

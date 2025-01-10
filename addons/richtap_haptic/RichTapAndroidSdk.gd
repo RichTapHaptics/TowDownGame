@@ -1,4 +1,5 @@
-extends Object
+@tool
+extends BaseRichTapPlatformSdk
 class_name RichTapAndroidSdk
 # TODO: Update to match your plugin's name
 var _plugin_name = "RichTapHapticAndroidPlugin"
@@ -65,7 +66,7 @@ func selectPlayer(playerType: int) :
 	return	_haptic_plugin.getInstance().selectPlayer(playerType)
 
 func _exit_tree():
-	print("RichtapSdk _exit_tree")
+	print("RichTapSdk _exit_tree")
 	_haptic_plugin.release()
 	_haptic_plugin = null
 

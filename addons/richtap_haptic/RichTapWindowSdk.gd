@@ -1,47 +1,50 @@
 @tool
-extends Object
+extends BaseRichTapPlatformSdk
 class_name RichTapWindowSdk
-var richtapPlay: RichtapPlay
+var richtapPlay: RichTapPlay
 
-func playHaptic(heContent: String, loop = 0, amplitude = 255, frequency = 0):
-	#print("RichtapSdk playHaptic heContent",heContent)
-	print("RichtapSdk playHaptic amplitude", amplitude)
+func playHaptic(he: String, loopCount: int = 0, interval: int = 0, amplitude: int = 255, freq: int = 0):
+	#print("RichTapSdk playHaptic heContent",heContent)
+	print("RichTapWindowSdk playHaptic amplitude", amplitude)
 	getSdkVersion()
-	richtapPlay.play(heContent, loop, 0, amplitude, frequency)
+	richtapPlay.play(he, loopCount, interval, amplitude, freq)
 
-func setTargetControllers(count = 1, index = [0]):
-	print("RichtapSdk playHaptic setTargetControllers", count, "index:", index)
+func setTargetControllers(index = [0]):
+	var count = index.size()
+	print("RichTapWindowSdk playHaptic setTargetControllers", count, "index:", index)
 	richtapPlay.setTargetControllers(count, index)
 
 func stopHaptic():
-	print("RichtapSdk stopHaptic")
+	print("RichTapWindowSdk stopHaptic")
 	richtapPlay.stop()
 
 func _enter_tree():
-	richtapPlay = RichtapPlay.new()
-	print("RichtapSdk SdkVersion:", getSdkVersion())
-	print("RichtapSdk ConnectedGameControllers:", richtapPlay.getConnectedGameControllers())
+	richtapPlay = RichTapPlay.new()
+	print("RichTapWindowSdk SdkVersion:", getSdkVersion())
+	print("RichTapWindowSdk ConnectedGameControllers:", richtapPlay.getConnectedGameControllers())
 	
 func getSdkVersion():
 	return richtapPlay.getVersionName()
 
-func openLog(enable):
+func enableDebug(enable):
 	richtapPlay.enableLog(enable, 0)
 	
 func updatePlayerParameter(intensity: int = 0, frequency: int = 0, interval: int = 0):
-		print("RichtapSdk sendLoopParameters intensity", intensity)
+		print("RichTapWindowSdk sendLoopParameters intensity", intensity)
 		richtapPlay.sendLoopParameters(intensity, frequency, interval)
 		
 func initHaptic():
-	print("RichtapSdk _init")
+	print("RichTapWindowSdk _init")
 	if (richtapPlay == null):
-		print("RichtapSdk playHaptic richtapPlay", richtapPlay)
-		richtapPlay = RichtapPlay.new()
+		print("RichTapSdk playHaptic richtapPlay")
+		richtapPlay = RichTapPlay.new()
 		richtapPlay.initialize()
-		openLog(true)
+		print("RichTapWindowSdk SdkVersion:", getSdkVersion())
+		print("RichTapWindowSdk ConnectedGameControllers:", richtapPlay.getConnectedGameControllers())
+		#enableDebug(true)
 	
 func _exit_tree():
-	print("RichtapSdk _exit_tree")
+	print("RichTapWindowSdk _exit_tree")
 	richtapPlay.release()
 	richtapPlay = null
 	

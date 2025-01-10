@@ -1,12 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cejb2ertrl0o6"]
+[gd_scene load_steps=10 format=3 uid="uid://cejb2ertrl0o6"]
 
 [ext_resource type="Script" path="res://game/guns/AlienRifle.gd" id="1_hv6am"]
 [ext_resource type="Texture2D" uid="uid://c0lagowo2jim3" path="res://Sprites/The Tiny Alchemist - Guns/gun7.png" id="2_knpti"]
 [ext_resource type="PackedScene" uid="uid://dcdejklfqy5wk" path="res://game/bullets/SmpBullet.tscn" id="3_v01pf"]
 [ext_resource type="Animation" uid="uid://b42daukxb8wl4" path="res://game/guns/anim/reload.anim" id="4_ehwfm"]
 [ext_resource type="AudioStream" uid="uid://coik2iggjwfeg" path="res://audio/GUNAuto_Assault Rifle B Fire_01.wav" id="4_ysjra"]
-[ext_resource type="Script" path="res://addons/richtap_haptic/RichtapPlayer.gd" id="6_k2lhx"]
-[ext_resource type="Resource" uid="uid://bkd0t7tsflh8b" path="res://haptic/HK416.he" id="7_1h24f"]
+[ext_resource type="Script" path="res://addons/richtap_haptic/RichTapPlayer.gd" id="6_h6tb4"]
 
 [sub_resource type="Animation" id="Animation_4mjfa"]
 resource_name = "run"
@@ -68,8 +67,7 @@ stream = ExtResource("4_ysjra")
 [node name="GunTip" type="Node2D" parent="."]
 position = Vector2(11, -1)
 
-[node name="RichtapPlayer2D" type="Node2D" parent="."]
-script = ExtResource("6_k2lhx")
-he = ExtResource("7_1h24f")
+[node name="RichTapPlayer2D" type="Node2D" parent="."]
+script = ExtResource("6_h6tb4")
 
 [connection signal="timeout" from="shoot_timer" to="." method="_on_timer_timeout"]

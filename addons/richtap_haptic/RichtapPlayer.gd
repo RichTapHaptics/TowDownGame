@@ -1,6 +1,5 @@
 @tool
 extends Node2D
-
 @export var he:HeResource
 @export var playing :bool:
 	set = set_playing
@@ -9,24 +8,29 @@ extends Node2D
 @export_range( -100, 100) var frequency:int = 0
 @export_range(-1,100) var interval:int = 0
 func playHaptic():
-	print("RichtapPlayer playHaptic-->",OS.get_name(),RichtapSdk)
+	print("RichTapPlayer playHaptic-->",OS.get_name(),RichTapSdk,amplitude)
 	if (he != null):
-		RichtapSdk.playHaptic(he.getHeContent(), loop, interval, amplitude, frequency)
+		return RichTapSdk.playHaptic(he.getHeContent(), loop, interval, amplitude, frequency)
 
 func stopHaptic():
-	RichtapSdk.stopHaptic()
+	RichTapSdk.stopHaptic()
+
+func playExtPrebaked(prebakedId: int, strength: int = 255):
+	RichTapSdk.playExtPrebaked(prebakedId,strength)
 
 func getSdkVersion():
-	RichtapSdk.getVersionName()
-
-func sendLoopParameters(intensity: int = 0, freq: int = 0, interval: int = 0):
-	RichtapSdk.updatePlayerParameter(intensity, freq, interval)
+	return RichTapSdk.getSdkVersion()
 
 func openLog(enable: bool):
-	RichtapSdk.openLog(enable)
+	RichTapSdk.openLog(enable)
 	
+func isSupportedRichTap():
+	return RichTapSdk.isSupportedRichTap()
+	
+func setTargetControllers(index = [0]):
+	RichTapSdk.setTargetControllers(index)
 func _enter_tree():
-	print("RichtapPlayer _enter_tree")
+	print("RichTapPlayer _enter_tree")
 	
 func set_playing(value: bool) -> void:
 	if playing != value:

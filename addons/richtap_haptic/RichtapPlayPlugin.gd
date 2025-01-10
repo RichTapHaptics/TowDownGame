@@ -9,9 +9,9 @@ func _enter_tree():
 	# Initialization of the plugin goes here.
 	android_export_plugin = AndroidExportPlugin.new()
 	add_export_plugin(android_export_plugin)
-	add_autoload_singleton("RichtapSdk", "res://addons/richtap_haptic/RichtapSdk.gd")
-	add_custom_type("RichtapPlayer2D", "Node2D",
-		load("res://addons/richtap_haptic/RichtapPlayer.gd"), null)
+	add_autoload_singleton("RichTapSdk", "res://addons/richtap_haptic/RichTapSdk.gd")
+	add_custom_type("RichTapPlayer2D", "Node2D",
+		load("res://addons/richtap_haptic/RichTapPlayer.gd"), null)
 	heEditorImportPlugin = preload("res://addons/richtap_haptic/HeEditorImportPlugin.gd").new()
 	add_import_plugin(heEditorImportPlugin)
 
@@ -19,7 +19,7 @@ func _enter_tree():
 func _exit_tree():
 	print("EditorPlugin _get_android_libraries")
 	# Clean-up of the plugin goes here.
-	remove_custom_type("RichtapPlayer")
+	remove_custom_type("RichTapPlayer2D")
 	remove_import_plugin(heEditorImportPlugin)
 	remove_autoload_singleton("RichTapSdk")
 	remove_export_plugin(android_export_plugin)
@@ -29,7 +29,7 @@ func _exit_tree():
 class AndroidExportPlugin extends EditorExportPlugin:
 	# TODO: Update to your plugin's name.
 	var _plugin_name = "RichTapHapticAndroidPlugin"
-	var _plugin_dir = "richtap_haptic/bin/"
+	var _plugin_dir = "richtap_haptic/bin/android/"
 
 	func _supports_platform(platform):
 		#print("_supports_platform",platform is EditorExportPlatformAndroid)
