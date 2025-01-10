@@ -1,7 +1,9 @@
 # Godot 4+ specific ignores
 .godot/
-android/
+/android/
 apk/
 RICHTAP_LOG.log
 .DS_Store
 export_presets.cfg
+translation/text.en.translation
+translation/text.zh_CN.translation
